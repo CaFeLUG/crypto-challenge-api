@@ -1,15 +1,14 @@
 class Contest < ApplicationRecord
   has_and_belongs_to_many :challenges, join_table: "challenges_contests"
 
-  before_save :persist_status
+  before_create :set_initial_status
 
   #changes contest state from running to closed.
   #runs every minute from cron via whenever
   def self.check_closing_time
     self.where(status: 'running').each do |contest|
       if Time.now >= contest.ends_at
-        contest.update_attribute(:status, 'closed')
-        puts contest.inspect
+        contest.close!
       end
     end
   end
@@ -24,18 +23,19 @@ class Contest < ApplicationRecord
 
   def contest_status
     @contest_status ||= begin
-      fsm = MicroMachine.new(status || "pending")
-      fsm.when(:run, "pending" => "running")
-      fsm.when(:close, "running" => "closed")
+      machine = MicroMachine.new(status || "pending")
+      machine.when(:run, "pending" => "running")
+      machine.when(:close, "running" => "closed")
 
-      fsm
+      machine.on(:any) { self.status = machine.state }
+
+      machine
     end
   end
 
+  private
 
-  protected
-
-  def persist_status
+  def set_initial_status
     self.status = contest_status.state
   end
 end
