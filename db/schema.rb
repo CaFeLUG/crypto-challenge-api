@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018214721) do
+ActiveRecord::Schema.define(version: 20161022175045) do
+
+  create_table "contests", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "begins_at"
+    t.datetime "ends_at"
+    t.string   "status"
+    t.text     "rules"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.text     "username"
