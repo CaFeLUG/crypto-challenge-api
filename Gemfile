@@ -24,5 +24,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem "rails-erd"
+  gem "capistrano-rails"
+  #gem 'capistrano3-puma'
 end
 
