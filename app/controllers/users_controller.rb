@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   before_filter :authenticate_request!, except: [:create]
 
+
+
   # GET /users
   def index
     @users = User.all
@@ -48,6 +50,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation, :score)
+      params.require(:user).permit(:email, :password, :password_confirmation, :score)
     end
 end

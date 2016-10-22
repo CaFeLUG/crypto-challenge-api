@@ -1,6 +1,8 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: [:show, :update, :destroy]
 
+  before_filter :authenticate_request!
+
   # GET /challenges
   def index
     @challenges = Challenge.all

@@ -3,14 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,  :trackable, :validatable
 
-  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 
+  has_many :solutions
+  has_many :challenges, :through => :solutions
+  has_many :contests, :through => :solutions
 
-  def email_required? 
-    false
-  end
-
-  def email_changed? 
-    false
-  end
 end

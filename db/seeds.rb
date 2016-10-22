@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 1.upto(3) do |i|
-  User.create({username: "user#{i}", password: '1q2w3e4r', password_confirmation: '1q2w3e4r'})
+  User.create({email: "user#{i}@mailinator.com", password: '1q2w3e4r', password_confirmation: '1q2w3e4r'})
 end

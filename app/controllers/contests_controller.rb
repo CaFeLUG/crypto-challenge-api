@@ -1,6 +1,8 @@
 class ContestsController < ApplicationController
   before_action :set_contest, only: [:show, :update, :destroy]
 
+  before_filter :authenticate_request!
+
   # GET /contests
   def index
     @contests = Contest.all
