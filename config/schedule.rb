@@ -20,5 +20,5 @@
 # Learn more: http://github.com/javan/whenever
 
 every 1.minute do 
-  runner "Contest.check_time"
+  runner "Contest.check_closing_time"
 end
