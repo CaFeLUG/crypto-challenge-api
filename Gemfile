@@ -11,6 +11,7 @@ gem 'micromachine'
 gem 'devise'
 gem 'jwt'
 gem 'whenever'
+gem 'net-ssh', '= 4.0.0.beta2'
 
 group :development, :test do
   gem 'byebug', platform: :mri
