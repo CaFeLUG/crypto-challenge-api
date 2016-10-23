@@ -8,7 +8,7 @@ default: &default
   adapter: postgresql
   pool: 10
   host: localhost
-  user: postgres
+  user: challenge 
 
 development:
   <<: *default
