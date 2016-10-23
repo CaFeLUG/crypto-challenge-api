@@ -1,3 +1,6 @@
+module Api
+
+
 class HintsController < ApplicationController
   before_action :set_hint, only: [:show, :update, :destroy]
 
@@ -50,4 +53,6 @@ class HintsController < ApplicationController
     def hint_params
       params.require(:hint).permit(:name, :challenge_id)
     end
+end
+
 end

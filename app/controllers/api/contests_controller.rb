@@ -1,3 +1,5 @@
+
+module Api
 class ContestsController < ApplicationController
   before_action :set_contest, only: [:show, :update, :destroy]
 
@@ -50,4 +52,6 @@ class ContestsController < ApplicationController
     def contest_params
       params.require(:contest).permit(:name, :begins_at, :ends_at, :status, :rules)
     end
+end
+
 end

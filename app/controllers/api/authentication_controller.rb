@@ -1,3 +1,6 @@
+
+module Api
+
 class AuthenticationController < ApplicationController
 
   def authenticate
@@ -19,4 +22,5 @@ class AuthenticationController < ApplicationController
     }
   end
 
+end
 end

@@ -1,3 +1,6 @@
+module Api
+
+
 class MainController < ApplicationController
 
   before_filter :authenticate_request!
@@ -5,4 +8,6 @@ class MainController < ApplicationController
   def index
     render json: '{"message":"Welcome to the crypto challenge api"}'
   end
+end
+
 end
