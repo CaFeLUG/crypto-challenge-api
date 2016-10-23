@@ -22,7 +22,7 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
 set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_ruby, '2.3.0p0'
+set :rbenv_ruby, '2.3.0'
 ## Defaults:
 # set :scm,           :git
 # set :branch,        :master
