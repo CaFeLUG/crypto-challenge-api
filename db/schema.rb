@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20161022214733) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "challenges", force: :cascade do |t|
     t.string   "name"
     t.integer  "score"
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 20161022214733) do
   create_table "challenges_contests", id: false, force: :cascade do |t|
     t.integer "challenge_id", null: false
     t.integer "contest_id",   null: false
-    t.index ["challenge_id", "contest_id"], name: "index_challenges_contests_on_challenge_id_and_contest_id"
-    t.index ["contest_id", "challenge_id"], name: "index_challenges_contests_on_contest_id_and_challenge_id"
+    t.index ["challenge_id", "contest_id"], name: "index_challenges_contests_on_challenge_id_and_contest_id", using: :btree
+    t.index ["contest_id", "challenge_id"], name: "index_challenges_contests_on_contest_id_and_challenge_id", using: :btree
   end
 
   create_table "contests", force: :cascade do |t|
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 20161022214733) do
     t.integer  "challenge_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["challenge_id"], name: "index_hints_on_challenge_id"
+    t.index ["challenge_id"], name: "index_hints_on_challenge_id", using: :btree
   end
 
   create_table "solutions", force: :cascade do |t|
@@ -53,9 +56,9 @@ ActiveRecord::Schema.define(version: 20161022214733) do
     t.string   "status"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["challenge_id"], name: "index_solutions_on_challenge_id"
-    t.index ["contest_id"], name: "index_solutions_on_contest_id"
-    t.index ["user_id"], name: "index_solutions_on_user_id"
+    t.index ["challenge_id"], name: "index_solutions_on_challenge_id", using: :btree
+    t.index ["contest_id"], name: "index_solutions_on_contest_id", using: :btree
+    t.index ["user_id"], name: "index_solutions_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,7 +72,11 @@ ActiveRecord::Schema.define(version: 20161022214733) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "hints", "challenges"
+  add_foreign_key "solutions", "challenges"
+  add_foreign_key "solutions", "contests"
+  add_foreign_key "solutions", "users"
 end
