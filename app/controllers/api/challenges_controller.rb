@@ -1,3 +1,6 @@
+module Api
+
+
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: [:show, :update, :destroy]
 
@@ -50,4 +53,5 @@ class ChallengesController < ApplicationController
     def challenge_params
       params.require(:challenge).permit(:name, :score, :description)
     end
+end
 end
