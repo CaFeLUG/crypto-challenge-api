@@ -26,5 +26,6 @@ group :development, :test do
   gem "capistrano-rails"
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano3-puma'
+  gem 'capistrano-rails-collection'
 end
 
