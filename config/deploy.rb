@@ -1,4 +1,4 @@
-server 'your_server_ip', port: your_port_num, roles: [:app], primary: true
+server '139.59.202.80', port: 22, roles: [:app], primary: true
 
 set :repo_url,        'https://github.com/CaFeLUG/crypto-challenge-api.git'
 set :application,     'crypto-challenge-api'
@@ -21,6 +21,8 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, '2.3.0p0'
 ## Defaults:
 # set :scm,           :git
 # set :branch,        :master
