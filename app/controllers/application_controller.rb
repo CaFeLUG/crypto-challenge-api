@@ -1,4 +1,3 @@
-module Api
   class ApplicationController < ActionController::API
   attr_reader :current_user
 
@@ -27,5 +26,4 @@ module Api
   def user_id_in_token?
     http_token && auth_token && auth_token[:user_id].to_i
   end
-end
 end
