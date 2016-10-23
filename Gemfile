@@ -25,6 +25,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem "rails-erd"
   gem "capistrano-rails"
-  #gem 'capistrano3-puma'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano3-puma'
 end
 

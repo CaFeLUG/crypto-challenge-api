@@ -1,4 +1,4 @@
-server 'your_server_ip', port: your_port_num, roles: [:app], primary: true
+server '139.59.202.80', port: 22, roles: [:app], primary: true
 
 set :repo_url,        'https://github.com/CaFeLUG/crypto-challenge-api.git'
 set :application,     'crypto-challenge-api'
