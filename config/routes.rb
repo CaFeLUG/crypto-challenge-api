@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :api do
+
     get 'main/index'
     root 'main#index'
 
