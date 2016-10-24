@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'main/index'
     root 'main#index'
 
-    #devise_for :users, skip: [:sessions, :registrations]
+    devise_for :users, skip: [:sessions, :registrations]
 
     resources :users, except: [:destroy, :update] do
       resources :contests, except: [:destroy, :update, :create]
